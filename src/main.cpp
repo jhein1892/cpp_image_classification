@@ -9,6 +9,9 @@ using namespace cv;
 using namespace std;
 
 int main(){
+    /***********************/
+    /*   IMAGE RENDERING   */
+    /***********************/
     // string image_path = samples::findFile("starry_night.jpg");
     // Mat img = imread(image_path, IMREAD_COLOR);
     // Mat img_greyscale = imread(image_path, IMREAD_GRAYSCALE);
@@ -34,8 +37,11 @@ int main(){
 
     // destroyAllWindows();
 
-    // string video_path = samples::findFile("Megamind.avi");
-    VideoCapture vid_capture("/Users/jacobhein/Downloads/IMG_0637.mov");
+    /***********************/
+    /*   VIDEO RENDERING   */
+    /***********************/
+    // VideoCapture vid_capture("/Users/jacobhein/Downloads/IMG_0637.mov");
+    VideoCapture vid_capture(0);
 
     if(!vid_capture.isOpened()){
         std::cout << "Error opening video stream" << endl;
