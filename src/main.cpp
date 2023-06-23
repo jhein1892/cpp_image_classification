@@ -6,13 +6,14 @@
 
 
 using namespace cv;
+using namespace std;
 
 int main(){
-    std::string image_path = samples::findFile("starry_night.jpg");
+    string image_path = samples::findFile("starry_night.jpg");
     Mat img = imread(image_path, IMREAD_COLOR);
 
     if(img.empty()){
-        std::cout << "Could not read the image: " << image_path << std::endl;
+        cout << "Could not read the image: " << image_path << endl;
         return 1;
     }
 
@@ -21,6 +22,8 @@ int main(){
     if(k == 's'){
         imwrite("starry_night.png", img);
     }
+
+    destroyAllWindows();
 
     return 0;
 
