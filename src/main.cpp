@@ -34,6 +34,22 @@ int main(){
 
     destroyAllWindows();
 
+
+    VideoCapture vid_capture("Resources/Cars.mp4");
+
+    if(!vid_capture.isOpened()){
+        std::cout << "Error opening video stream" << endl;
+    } else {
+        int fps = vid_capture.get(5);
+        std::cout<< "Frames per second: " << fps;
+
+        int frame_count = vid_capture.get(7);
+
+        std::cout << " Frame count: " << frame_count;
+    }
+
+
+
     return 0;
 
 }
