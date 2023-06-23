@@ -48,10 +48,30 @@ int main(){
         std::cout << " Frame count: " << frame_count;
     }
 
+    while(vid_capture.isOpened()){
+        Mat frame;
 
+        bool isSuccess = vid_capture.read(frame);
 
+        if(isSuccess == true){
+            imshow("Frame", frame);
+        }
 
+        if(isSuccess == false){
+            std::cout << "Video camera is disconnected" << std::endl;
+            break;
+        }
 
+        int key = waitKey(20);
+        if(key == 'q')
+        {
+            std::cout << "q key is pressed by the user. Stopped the video" << std::endl;
+            break;
+        }
+    }
+
+    vid_capture.release();
+    destroyAllWindows();
     return 0;
 
 }
