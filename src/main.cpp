@@ -48,10 +48,14 @@ int main(){
     } else {
         int fps = vid_capture.get(5);
         std::cout<< "Frames per second: " << fps;
-
         int frame_count = vid_capture.get(7);
-
         std::cout << " Frame count: " << frame_count;
+
+        int frame_width = static_cast<int>(vid_capture.get(3));
+        int frame_height = static_cast<int>(vid_capture.get(4));
+
+        Size frame_size(frame_width, frame_height);
+        int fps = 20;
     }
 
     while(vid_capture.isOpened()){
