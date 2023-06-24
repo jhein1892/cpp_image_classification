@@ -40,8 +40,13 @@ int main(){
     /***********************/
     /*   VIDEO RENDERING   */
     /***********************/
-    // VideoCapture vid_capture("/Users/jacobhein/Downloads/IMG_0637.mov");
-    VideoCapture vid_capture(0);
+    VideoCapture vid_capture("/Users/jacobhein/Downloads/IMG_0637.mov");
+    // VideoCapture vid_capture(0);
+    int fps = 20;
+    int frame_width = static_cast<int>(vid_capture.get(3));
+    int frame_height = static_cast<int>(vid_capture.get(4));
+    Size frame_size(frame_width, frame_height);
+    VideoWriter output("../TEST.avi", VideoWriter::fourcc('M','J','P','G'), fps, frame_size);
 
     if(!vid_capture.isOpened()){
         std::cout << "Error opening video stream" << endl;
@@ -51,11 +56,6 @@ int main(){
         int frame_count = vid_capture.get(7);
         std::cout << " Frame count: " << frame_count;
 
-        int frame_width = static_cast<int>(vid_capture.get(3));
-        int frame_height = static_cast<int>(vid_capture.get(4));
-
-        Size frame_size(frame_width, frame_height);
-        int fps = 20;
     }
 
     while(vid_capture.isOpened()){
@@ -63,20 +63,21 @@ int main(){
 
         bool isSuccess = vid_capture.read(frame);
 
-        if(isSuccess == true){
-            imshow("Frame", frame);
-        }
-
         if(isSuccess == false){
             std::cout << "Video camera is disconnected" << std::endl;
             break;
         }
 
-        int key = waitKey(20);
-        if(key == 'q')
-        {
-            std::cout << "q key is pressed by the user. Stopped the video" << std::endl;
-            break;
+        if(isSuccess == true){
+            output.write(frame);
+                imshow("Frame", frame);
+                int key = waitKey(20);
+                if(key == 'q')
+                {
+                    std::cout << "q key is pressed by the user. Stopped the video" << std::endl;
+                    break;
+                }
+
         }
     }
 
