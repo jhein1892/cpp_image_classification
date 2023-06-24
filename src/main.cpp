@@ -18,20 +18,49 @@ int main()
     imshow("Original Image", img);
     waitKey();
 
-    int down_width = 300;
-    int down_height = 200;
-    Mat resized_down;
-    resize(img, resized_down, Size(down_width, down_height), INTER_LINEAR);
+    // int down_width = 300;
+    // int down_height = 200;
+    // Mat resized_down;
+    // resize(img, resized_down, Size(down_width, down_height), INTER_LINEAR);
 
-    int up_width = 1200;
-    int up_height = 800;
-    Mat resized_up;
-    resize(img, resized_up, Size(up_width, up_height), INTER_LINEAR);
+    // int up_width = 1200;
+    // int up_height = 800;
+    // Mat resized_up;
+    // resize(img, resized_up, Size(up_width, up_height), INTER_LINEAR);
 
-    imshow("Resized Down by defining height and width", resized_down);
+    // imshow("Resized Down by defining height and width", resized_down);
+    // waitKey();
+    // imshow("Resized Up by defining height and width", resized_up);
+    // waitKey();
+
+    // double scale_up_x = 1.2;
+    // double scale_up_y = 1.2;
+
+    double scale_down = 0.6;
+
+    Mat scaled_f_up, scaled_f_down;
+
+    resize(img, scaled_f_down, Size(), scale_down, scale_down, INTER_LINEAR);
+    // resize(img, scaled_f_up, Size(), scale_up_x, scale_up_y, INTER_LINEAR);
+
+    imshow("Resized Down using scaling", scaled_f_down);
     waitKey();
-    imshow("Resized Up by defining height and width", resized_up);
+    // imshow("Resized Up using scaling", scaled_f_up);
+    // waitKey();
+
+    Mat res_inter_linear, res_inter_nearest, res_inter_area;
+    resize(img, res_inter_linear, Size(), scale_down, scale_down, INTER_LINEAR);
+    resize(img, res_inter_nearest, Size(), scale_down, scale_down, INTER_NEAREST);
+    resize(img, res_inter_area, Size(), scale_down, scale_down, INTER_AREA);
+    
+    imshow("Resized using Linear", res_inter_linear);
     waitKey();
+    imshow("Resized using Nearest", res_inter_nearest);
+    waitKey();
+    imshow("Resized using Area", res_inter_area);
+    waitKey();
+
+    destroyAllWindows();
 
     return 0;
 }
