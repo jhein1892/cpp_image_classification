@@ -52,13 +52,21 @@ int main()
     resize(img, res_inter_linear, Size(), scale_down, scale_down, INTER_LINEAR);
     resize(img, res_inter_nearest, Size(), scale_down, scale_down, INTER_NEAREST);
     resize(img, res_inter_area, Size(), scale_down, scale_down, INTER_AREA);
+
+    Mat a,b,c;
+    vconcat(res_inter_linear, res_inter_nearest,a);
+    vconcat(res_inter_area, res_inter_area, b);
+    vconcat(a,b,c);
+
+    imshow("Inter Linear :: Inter Nearest :: Inter Area :: Inter Area", c);
+    waitKey();
     
-    imshow("Resized using Linear", res_inter_linear);
-    waitKey();
-    imshow("Resized using Nearest", res_inter_nearest);
-    waitKey();
-    imshow("Resized using Area", res_inter_area);
-    waitKey();
+    // imshow("Resized using Linear", res_inter_linear);
+    // waitKey();
+    // imshow("Resized using Nearest", res_inter_nearest);
+    // waitKey();
+    // imshow("Resized using Area", res_inter_area);
+    // waitKey();
 
     destroyAllWindows();
 
