@@ -14,6 +14,7 @@ int main()
     if(img.empty()){
         std::cout << "Could not read Image" << std::endl;
     }   
+    std::cout << "Original Height and Width: "<< img.rows << "x" << img.cols << std::endl;
     imshow("Original Image", img);
     waitKey();
 
