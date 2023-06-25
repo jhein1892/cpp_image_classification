@@ -48,7 +48,7 @@ int main()
                 y1 = imgheight - 1;
 
                 Mat tiles = img_copy(Range(y, imgheight), Range(x, imgWidth));
-                imwrite("../saved_patches/tile" + a + "_" + b + ".jpg", tiles);
+                // imwrite("../saved_patches/tile" + a + "_" + b + ".jpg", tiles);
                 rectangle(img, Point(x,y), Point(x1, y1), Scalar(0,255,0), 1);
             }
             else if (y1 >= imgheight)
@@ -57,7 +57,7 @@ int main()
                 y1 = imgheight - 1;
 
                 Mat tiles = img_copy(Range(y, imgheight), Range(x, x + N));
-                imwrite("../saved_patches/tile" + a + "_" + b + ".jpg", tiles);
+                // imwrite("../saved_patches/tile" + a + "_" + b + ".jpg", tiles);
                 rectangle(img, Point(x,y), Point(x1, y1), Scalar(0,255,0), 1);
             } 
             else if (x1 >= imgWidth)
@@ -66,20 +66,20 @@ int main()
                 x1 = imgWidth - 1;
 
                 Mat tiles = img_copy(Range(y, y + M), Range(x, imgWidth));
-                imwrite("../saved_patches/tile" + a + "_" + b + ".jpg", tiles);
+                // imwrite("../saved_patches/tile" + a + "_" + b + ".jpg", tiles);
                 rectangle(img, Point(x,y), Point(x1, y1), Scalar(0,255,0), 1);
             }
             else
             {
                 Mat tiles = img_copy(Range(y, y + M), Range(x, x + N));
-                imwrite("../saved_patches/tile" + a + "_" + b + ".jpg", tiles);
+                // imwrite("../saved_patches/tile" + a + "_" + b + ".jpg", tiles);
                 rectangle(img, Point(x,y), Point(x1, y1), Scalar(0,255,0), 1);
             }
         }
     }
 
     imshow("Patched Image", img);
-    
+
 
     waitKey(0);
     destroyAllWindows();
