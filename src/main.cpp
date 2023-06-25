@@ -16,9 +16,11 @@ int main()
     imshow("Original Image", img);
     imshow("Cropped Image", cropped_img);
 
-    imwrite("./Cropped Image.jpg", cropped_img);
+    // Writes cropped Image
+    // imwrite("../Cropped Image.jpg", cropped_img);
 
     waitKey(0);
+    destroyAllWindows();
 
     return 0;
 }
