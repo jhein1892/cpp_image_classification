@@ -41,6 +41,8 @@ int main(int, char**) {
     imshow("Original Image", image);
     waitKey(0);
 
+    destroyAllWindows();
+
     // imwrite("../rotated_img.jpg", rotated_image);
 
     return 0;
