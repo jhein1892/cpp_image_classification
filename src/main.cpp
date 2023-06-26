@@ -20,10 +20,28 @@ int main(int, char**) {
     // rotate the image using warpAffine
     warpAffine(image, rotated_image, rotation_matrix, image.size());
     imshow("Rotated image", rotated_image);
-
     waitKey(0);
 
-    imwrite("../rotated_img.jpg", rotated_image);
+
+    int height = image.rows;
+    int width = image.cols;
+
+    // Get tx and ty values for translation
+    float tx = float(width) / 4;
+    float ty = float(height) / 4;
+
+    // create the translation matrix using tx and ty
+    float warp_values[] = {1.0, 0.0, tx, 0.0, 1.0, ty };
+    Mat translation_matrix = Mat(2, 3, CV_32F, warp_values);
+
+    Mat translated_image;
+    warpAffine(image, translated_image, translation_matrix, image.size());
+
+    imshow("Translated image", translated_image);
+    imshow("Original Image", image);
+    waitKey(0);
+
+    // imwrite("../rotated_img.jpg", rotated_image);
 
     return 0;
 }
