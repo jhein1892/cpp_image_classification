@@ -4,6 +4,5 @@
 using namespace cv;
 
 int main(){
-
-    return 0;
+    // UNABLE TO GET THE CUBE IMAGES
 }
