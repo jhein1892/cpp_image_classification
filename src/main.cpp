@@ -59,9 +59,14 @@ int main(){
     waitKey();
     destroyAllWindows();
     
-
-
-
+    // Apply sharpening using kernel
+    Mat sharp_img;
+    Mat kernel3 = (Mat_<double>(3,3) << 0, -1, 0, -1, 5, -1, 0, -1, 0);
+    filter2D(image, sharp_img, -1 , kernel3, Point(-1,-1), 0, BORDER_DEFAULT);
+    imshow("Original", image);
+    imshow("Sharpened", sharp_img);
+    waitKey();
+    destroyAllWindows();
 
     return 0;
 }
