@@ -6,6 +6,7 @@ using namespace cv;
 int main(){
     std::string image_path = samples::findFile("starry_night.jpg");
     Mat img = imread(image_path);
+    imshow("Originam Image", img);
     waitKey(0);
 
     if (img.empty()){
@@ -19,7 +20,6 @@ int main(){
     line(imageLine, pointA, pointB, Scalar(255,255,0), 3, 8, 0);
     imshow("lined Image", imageLine);
     waitKey(0);
-
 
     return 0;
 }
