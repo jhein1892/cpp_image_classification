@@ -58,5 +58,15 @@ int main(){
     imshow("Ellipse Image", ellipseImage);
     waitKey(0);
 
+    // Draw Half an Ellipse
+    Mat halfEllipse = img.clone();
+
+    ellipse(halfEllipse, ellipse_center, axis1, 0, 180, 360, Scalar(255, 0, 0), 3, 8, 0);
+    // Filled
+    ellipse(halfEllipse, ellipse_center, axis1, 0, 0, 180, Scalar(255, 0, 0), -2, 8, 0);
+    imshow("Half Ellipse", halfEllipse);
+    waitKey(0);
+
+
     return 0;
 }
