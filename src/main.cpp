@@ -68,5 +68,15 @@ int main(){
     waitKey();
     destroyAllWindows();
 
+    // Apply bilateral filtering
+    Mat bilateral_filter;
+    bilateralFilter(image, bilateral_filter, 9, 75, 75);
+    imshow("Original", image);
+    imshow("Gaussian", gaussian_blur);
+    imshow("Bilateral Filter", bilateral_filter);
+    waitKey();
+    destroyAllWindows();
+
+
     return 0;
 }
