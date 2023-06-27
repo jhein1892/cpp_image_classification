@@ -48,6 +48,15 @@ int main(){
 
     // Draw an Ellipse
     Mat ellipseImage = img.clone();
+    Point ellipse_center(250,250);
+    Point axis1(100, 100);
+    Point axis2(400, 400);
+
+    ellipse(ellipseImage, ellipse_center, axis1, 0, 0, 360, Scalar(0,255, 0), 3, 8, 0);
+    ellipse(ellipseImage, ellipse_center, axis2, 90, 0, 360, Scalar(0,255, 0), 3, 8, 0);
+
+    imshow("Ellipse Image", ellipseImage);
+    waitKey(0);
 
     return 0;
 }
