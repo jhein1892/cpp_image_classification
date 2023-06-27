@@ -38,9 +38,30 @@ int main(){
     imshow("Kernel blur", img);
     imshow("CV Blur", img_blur);
     waitKey();
-
-
     destroyAllWindows();
+
+    // Apply Gaussian blur
+    Mat gaussian_blur;
+    GaussianBlur(image, gaussian_blur, Size(5,5),0.0, 0.0);
+    imshow("Original", image);
+    imshow("Kernel", img_blur);
+    imshow("Gaussian", gaussian_blur);
+    waitKey();
+    destroyAllWindows();
+
+    // Apply Median blut
+    Mat median_blur;
+    medianBlur(image, median_blur, 5);
+    imshow("Original", image);
+    imshow("Kernel", img_blur);
+    imshow("Gaussian", gaussian_blur);
+    imshow("Median", median_blur);
+    waitKey();
+    destroyAllWindows();
+    
+
+
+
 
     return 0;
 }
