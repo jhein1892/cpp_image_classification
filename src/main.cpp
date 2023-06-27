@@ -21,7 +21,13 @@ int main(){
     imshow("lined Image", imageLine);
     waitKey(0);
 
-    
+    // Draw Circle on image
+    Mat circleImage = img.clone();
+    Point circle_center(415, 190);
+    int radius = 100;
+    circle(circleImage, circle_center, radius, Scalar(0, 0, 255), 3, 8, 0);
+
+    imshow("Circle on Image", circleImage);
 
     return 0;
 }
