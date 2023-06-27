@@ -21,13 +21,21 @@ int main(){
     imshow("lined Image", imageLine);
     waitKey(0);
 
-    // Draw Circle on image
+    // Draw outlined Circle on image
     Mat circleImage = img.clone();
     Point circle_center(415, 190);
     int radius = 100;
+    // For outlined circle
     circle(circleImage, circle_center, radius, Scalar(0, 0, 255), 3, 8, 0);
-
     imshow("Circle on Image", circleImage);
+    waitKey(0);
+
+    // Draw filled circle on Image
+    Mat filledImage = img.clone();
+    circle(filledImage, circle_center, radius, Scalar(0,0,255), -1, 8, 0);
+
+    imshow("Filled Circle", filledImage);
+    waitKey(0);
 
     return 0;
 }
