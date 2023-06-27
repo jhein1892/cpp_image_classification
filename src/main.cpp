@@ -37,5 +37,17 @@ int main(){
     imshow("Filled Circle", filledImage);
     waitKey(0);
 
+    // Draw a rectangle on Image
+    Mat rectImage = img.clone();
+    Point start_point(100, 200);
+    Point end_point(300, 550);
+
+    rectangle(rectImage, start_point, end_point, Scalar(0, 255, 0), 3, 8, 0);
+    imshow("Rectangle Image", rectImage);
+    waitKey(0);
+
+    // Draw an Ellipse
+    Mat ellipseImage = img.clone();
+
     return 0;
 }
