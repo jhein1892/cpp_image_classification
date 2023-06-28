@@ -33,6 +33,20 @@ int main( int argc, char** argv)
     waitKey();
     destroyAllWindows();
 
+    // Threshold to Zero
+    threshold(src, dst, thresh, maxValue, THRESH_TOZERO);
+    imshow("Original", src);
+    imshow("Thresh to Zero", dst);
+    waitKey();
+    destroyAllWindows();
+
+    // Threshold to Zero Inverted
+    threshold(src, dst, thresh, maxValue, THRESH_TOZERO_INV);
+    imshow("Original", src);
+    imshow("Thresh to Zero Inverted", dst);
+    waitKey();
+    destroyAllWindows();
+
     
     // // Basic threashold example
     // threshold(src, dst, 0, 255, THRESH_BINARY);
@@ -60,6 +74,7 @@ int main( int argc, char** argv)
     // // Basic threashold example
     // threshold(src, dst, 127, 255, THRESH_TOZERO_INV);
     // imwrite("../opencv-thresh-to-zero-inv.jpg", dst);
+    
     waitKey();
 
 
