@@ -15,6 +15,17 @@ int main( int argc, char** argv)
     imshow("Original", src);
     imshow("Binary", dst);
     waitKey();
+    destroyAllWindows();
+
+    // Inverse Binary
+    thresh = 127;
+    maxValue = 0;
+    threshold(src, dst, thresh, maxValue, THRESH_BINARY_INV);
+    imshow("Original", src);
+    imshow("Binary Inverse", dst);
+    waitKey();
+    destroyAllWindows();
+
     
     // // Basic threashold example
     // threshold(src, dst, 0, 255, THRESH_BINARY);
