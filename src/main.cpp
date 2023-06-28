@@ -26,6 +26,13 @@ int main( int argc, char** argv)
     waitKey();
     destroyAllWindows();
 
+    // Truncate Threshold
+    threshold(src, dst, thresh, maxValue, THRESH_TRUNC);
+    imshow("Original", src);
+    imshow("Truncate Thresh", dst);
+    waitKey();
+    destroyAllWindows();
+
     
     // // Basic threashold example
     // threshold(src, dst, 0, 255, THRESH_BINARY);
