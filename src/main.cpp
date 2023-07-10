@@ -4,7 +4,7 @@
 using namespace cv;
 
 int main(){
-    std::string image_path = samples::findFile("ellipses.jpg");
+    std::string image_path = samples::findFile("butterfly.jpg");
     Mat image = imread(image_path);
 
     imshow("Ellipses", image);
