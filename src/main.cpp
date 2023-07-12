@@ -7,7 +7,7 @@ using namespace cv;
 Point top_left_corner, bottom_right_corner;
 // image image
 Mat image;
-
+// Used to draw a rectangle on the image
 void drawRectangle(int action, int x, int y, int flags, void *userdata)
 {
     if (action == EVENT_LBUTTONDOWN)
@@ -22,6 +22,34 @@ void drawRectangle(int action, int x, int y, int flags, void *userdata)
 
         imshow("Window", image);
     }
+}
+
+// Resizing an image
+int maxScaleUp = 100;
+int scaleFactor = 1;
+
+std::string windowName = "Resize Image";
+std::string trackbarValue = "Scale";
+
+void scaleImage(int, void*)
+{
+    // Read Image
+    std::string image_path = samples::findFile("starry_night.jpg");
+    image = imread(image_path);
+
+    double scaleFactorDouble = 1 + scaleFactor/100.0;
+
+    if(scaleFactorDouble == 0)
+    {
+        scaleFactorDouble = 1;
+    }
+
+    Mat scaledImage;
+    // Resize the image
+    resize(image, scaledImage, Size(), scaleFactorDouble, scaleFactorDouble, INTER_LINEAR);
+    // Display the image
+    imshow(windowName, scaledImage);
+    
 }
 
 
@@ -49,5 +77,23 @@ int main() {
         }
     }
     destroyAllWindows();
+
+    // Create a window to display results and set the flag to Autosize
+    namedWindow(windowName, WINDOW_AUTOSIZE);
+
+    // Create Trackbards and associate a callback function
+    createTrackbar(trackbarValue, windowName, &scaleFactor, maxScaleUp, scaleImage);
+    scaleImage(25,0);
+
+    imshow(windowName, image);
+    waitKey(0);
+    destroyAllWindows();
+    return 0;
+
+
+
+
+
+
     return 0;
 }
