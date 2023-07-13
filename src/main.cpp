@@ -104,5 +104,13 @@ int main () {
     waitKey(0);
     destroyAllWindows();
 
+    /*Contour detection and drawing using different extraction modes to complement the understanding of hierarchies*/
+    std::string image2_path = samples::findFile("mask.jpg");
+    Mat image2 = imread(image2_path);
+    Mat img_grey2;
+    cvtColor(image2, img_grey2, COLOR_BGR2GRAY);
+    Mat thresh2;
+    threshold(img_grey2, thresh2, 150, 255, THRESH_BINARY);
+
     return 0;
 }
