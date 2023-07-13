@@ -138,7 +138,18 @@ int main () {
     findContours(thresh2, contours5, hierarchy5, RETR_CCOMP, CHAIN_APPROX_NONE);
     Mat image_copy6 = image2.clone();
     drawContours(image_copy6, contours5, -1, Scalar(0, 255, 0), 2);
-    imshow("EXTERNAL", image_copy6);
+    imshow("CCOMP", image_copy6);
+
+    waitKey(0);
+    // destroyAllWindows();
+
+    // RETR_TREE
+    std::vector<std::vector<Point>> contours6;
+    std::vector<Vec4i> hierarchy6;
+    findContours(thresh2, contours6, hierarchy6, RETR_TREE, CHAIN_APPROX_NONE);
+    Mat image_copy7 = image2.clone();
+    drawContours(image_copy7, contours6, -1, Scalar(0, 255, 0), 2);
+    imshow("CCOMP", image_copy7);
     waitKey(0);
     destroyAllWindows();
 
