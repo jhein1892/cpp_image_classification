@@ -112,5 +112,15 @@ int main () {
     Mat thresh2;
     threshold(img_grey2, thresh2, 150, 255, THRESH_BINARY);
 
+    // RETR_LIST
+    std::vector<std::vector<Point>> contours3;
+    std::vector<Vec4i> hierarchy3;
+    findContours(thresh, contours3, hierarchy3, RETR_LIST, CHAIN_APPROX_NONE);
+    Mat image_copy4 = image2.clone();
+    drawContours(image_copy4, contours3, -1, Scalar(0, 255, 0), 2);
+    imshow("LIST", image_copy4);
+    waitKey(0);
+    destroyAllWindows();
+
     return 0;
 }
