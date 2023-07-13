@@ -105,7 +105,7 @@ int main () {
     destroyAllWindows();
 
     /*Contour detection and drawing using different extraction modes to complement the understanding of hierarchies*/
-    std::string image2_path = samples::findFile("mask.jpg");
+    std::string image2_path = samples::findFile("pic1.jpg");
     Mat image2 = imread(image2_path);
     Mat img_grey2;
     cvtColor(image2, img_grey2, COLOR_BGR2GRAY);
@@ -115,10 +115,20 @@ int main () {
     // RETR_LIST
     std::vector<std::vector<Point>> contours3;
     std::vector<Vec4i> hierarchy3;
-    findContours(thresh, contours3, hierarchy3, RETR_LIST, CHAIN_APPROX_NONE);
+    findContours(thresh2, contours3, hierarchy3, RETR_LIST, CHAIN_APPROX_NONE);
     Mat image_copy4 = image2.clone();
     drawContours(image_copy4, contours3, -1, Scalar(0, 255, 0), 2);
     imshow("LIST", image_copy4);
+    waitKey(0);
+    // destroyAllWindows();
+    
+    // RETR_EXTERNAL
+    std::vector<std::vector<Point>> contours4;
+    std::vector<Vec4i> hierarchy4;
+    findContours(thresh2, contours4, hierarchy4, RETR_EXTERNAL, CHAIN_APPROX_NONE);
+    Mat image_copy5 = image2.clone();
+    drawContours(image_copy5, contours4, -1, Scalar(0, 255, 0), 2);
+    imshow("EXTERNAL", image_copy5);
     waitKey(0);
     destroyAllWindows();
 
