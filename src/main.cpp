@@ -149,7 +149,7 @@ int main () {
     findContours(thresh2, contours6, hierarchy6, RETR_TREE, CHAIN_APPROX_NONE);
     Mat image_copy7 = image2.clone();
     drawContours(image_copy7, contours6, -1, Scalar(0, 255, 0), 2);
-    imshow("CCOMP", image_copy7);
+    imshow("TREE", image_copy7);
     waitKey(0);
     destroyAllWindows();
 
