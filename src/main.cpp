@@ -49,7 +49,7 @@ int main(int argc, char const *argv[]){
     }
     else 
     {
-        video_file = "/Users/jacobhein/Downloads/IMG_0637.mov";
+        video_file = "/Users/jacobhein/Downloads/IMG_0619.mov";
     }
     VideoCapture cap(video_file);
     if(!cap.isOpened())

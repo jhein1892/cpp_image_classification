@@ -42,7 +42,7 @@ int main(){
     /***********************/
     /*   VIDEO RENDERING   */
     /***********************/
-    VideoCapture vid_capture("/Users/jacobhein/Downloads/IMG_0637.mov");
+    VideoCapture vid_capture("/Users/jacobhein/Downloads/IMG_0619.mov");
     // VideoCapture vid_capture(0);
     int fps = 20;
     int frame_width = static_cast<int>(vid_capture.get(3));
