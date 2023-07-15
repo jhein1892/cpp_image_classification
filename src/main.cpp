@@ -75,9 +75,30 @@ int main(int argc, char const *argv[]){
     // Calculate the median along the time axis
     Mat medianFrame = compute_median(frames);
 
-    // Display median frame
-    imshow("frame", medianFrame);
-    waitKey(0);
+
+    cap.set(CAP_PROP_POS_FRAMES, 0);
+
+    Mat grayMedianFrame;
+    cvtColor(medianFrame, grayMedianFrame, COLOR_BGR2GRAY);
+
+    while(1)
+    {
+        cap >> frame;
+        if(frame.empty())
+            break;
+        
+        cvtColor(frame, frame, COLOR_BGR2GRAY);
+
+        Mat dframe;
+        absdiff(frame, grayMedianFrame, dframe);
+
+        threshold(dframe, dframe, 30, 255, THRESH_BINARY);
+
+        imshow("Frame", dframe);
+        waitKey(20);
+    }
+
+    cap.release();
 
     return 0;
 }
