@@ -37,9 +37,47 @@ Mat compute_median(std::vector<Mat> vec)
             medianImg.at<Vec3b>(row, col)[2] = computeMedian(elements_R);
         }
     }
-    return medianImg
+    return medianImg;
 }
 
-int main(){
+int main(int argc, char const *argv[]){
+    std::string video_file;
+
+    if(argc > 1)
+    {
+        video_file = argv[1];
+    }
+    else 
+    {
+        video_file = "/Users/jacobhein/Downloads/IMG_0637.mov";
+    }
+    VideoCapture cap(video_file);
+    if(!cap.isOpened())
+        std::cerr << "Error opening video file\n";
+    
+    // Randomly select 25 frames
+    std::default_random_engine generator;
+    std::uniform_int_distribution<int>distribution(0,cap.get(CAP_PROP_FRAME_COUNT));
+
+    std::vector<Mat> frames;
+    Mat frame;
+
+    for(int i = 0; i< 25; i++)
+    {
+        int fid = distribution(generator);
+        cap.set(CAP_PROP_POS_FRAMES, fid);
+        Mat frame;
+        cap >> frame;
+        if(frame.empty())
+            continue;
+        frames.push_back(frame);
+    }
+    // Calculate the median along the time axis
+    Mat medianFrame = compute_median(frames);
+
+    // Display median frame
+    imshow("frame", medianFrame);
+    waitKey(0);
+
     return 0;
 }
