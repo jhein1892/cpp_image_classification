@@ -11,7 +11,7 @@ using namespace dnn;
 int main()
 {
     std::vector<std::string> class_names;
-    std::ifstream ifs(std::string("../../input/classification_classes_ILSVRC2012.txt").c_str());
+    std::ifstream ifs(std::string("/Users/jacobhein/Desktop/OpenCV/opencv/samples/data/dnn/classification_classes_ILSVRC2012.txt").c_str());
     std::string line;
     while(std::getline(ifs, line))
     {
