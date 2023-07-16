@@ -17,5 +17,8 @@ int main()
     {
         class_names.push_back(line);
     }
+
+    // Load the neural network model
+    auto model = readNet("../../input/DenseNet_121.prototxt", "../../input/DenseNet+121.caffemodel", "Caffe");
     return 0;
 }
