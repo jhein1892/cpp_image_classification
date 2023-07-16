@@ -19,6 +19,11 @@ int main()
     }
 
     // Load the neural network model
-    auto model = readNet("../../input/DenseNet_121.prototxt", "../../input/DenseNet+121.caffemodel", "Caffe");
+    auto model = readNet("/Users/jacobhein/Desktop/OpenCV/opencv/samples/data/dnn/DenseNet_121.prototxt", "/Users/jacobhein/Desktop/OpenCV/opencv/samples/data/dnn/DenseNet_121.caffemodel", "Caffe");
+
+
+    std::string image_path = samples::findFile("tiger.jpg");
+    Mat image = imread(image_path);
+    Mat blob = blobFromImage(image, 0.01, Size(224, 224), Scalar(104, 117, 123));
     return 0;
 }
