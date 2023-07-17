@@ -9,5 +9,12 @@ using namespace cv;
 using namespace dnn;
 
 int main(){
+    std::vector<std::string> class_names;
+    std::ifstream ifs(std::string("/Users/jacobhein/Desktop/OpenCV/opencv/samples/data/dnn/object_detection_classes_coco.txt").c_str());
+    std::string line;
+    while(std::getline(ifs, line))
+    {
+        class_names.push_back(line);
+    }
     return 0;
 }
