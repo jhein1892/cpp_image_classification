@@ -14,7 +14,9 @@ int main(){
     std::string line;
     while(std::getline(ifs, line))
     {
-        class_names.push_back(line);
+       class_names.push_back(line);
     }
+
+    auto model = readNet("/Users/jacobhein/Desktop/OpenCV/opencv/samples/data/dnn/frozen_inference_graph.pb", "/Users/jacobhein/Desktop/OpenCV/opencv/samples/data/dnn/ssd_mobilenet_v2_coco_2018_03_29.pbtxt", "TensorFlow");
     return 0;
 }
