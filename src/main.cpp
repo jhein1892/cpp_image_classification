@@ -1,4 +1,5 @@
-// Object Detection
+// Object Detection 
+// Not working, it looks like there is something buggy with C++ and this model
 #include <iostream>
 #include <fstream>
 #include <opencv2/opencv.hpp>
